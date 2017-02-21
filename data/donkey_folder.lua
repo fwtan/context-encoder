@@ -72,14 +72,15 @@ local trainHook = function(self, path)
    local iW = input:size(3)
    local iH = input:size(2)
 
-   -- do random crop
-   local oW = sampleSize[2];
-   local oH = sampleSize[2]
-   local h1 = math.ceil(torch.uniform(1e-2, iH-oH))
-   local w1 = math.ceil(torch.uniform(1e-2, iW-oW))
-   local out = image.crop(input, w1, h1, w1 + oW, h1 + oH)
-   assert(out:size(2) == oW)
-   assert(out:size(3) == oH)
+   -- -- do random crop
+   -- local oW = sampleSize[2];
+   -- local oH = sampleSize[2]
+   -- local h1 = math.ceil(torch.uniform(1e-2, iH-oH))
+   -- local w1 = math.ceil(torch.uniform(1e-2, iW-oW))
+   -- local out = image.crop(input, w1, h1, w1 + oW, h1 + oH)
+   -- assert(out:size(2) == oW)
+   -- assert(out:size(3) == oH)
+   out = input:clone()
    -- do hflip with probability 0.5
    if torch.uniform() > 0.5 then out = image.hflip(out); end
    out:mul(2):add(-1) -- make it [0, 1] -> [-1, 1]

@@ -4,8 +4,8 @@ require 'optim'
 util = paths.dofile('util.lua')
 
 opt = {
-   batchSize = 64,         -- number of samples to produce
-   loadSize = 350,         -- resize the loaded image to loadsize maintaining aspect ratio. 0 means don't resize. -1 means scale randomly between [0.5,2] -- see donkey_folder.lua
+   batchSize = 960,        -- number of samples to produce
+   loadSize = 0,           -- resize the loaded image to loadsize maintaining aspect ratio. 0 means don't resize. -1 means scale randomly between [0.5,2] -- see donkey_folder.lua
    fineSize = 128,         -- size of random crops
    nBottleneck = 100,      -- #  of dim for bottleneck of encoder
    nef = 64,               -- #  of encoder filters in first conv layer
@@ -19,7 +19,7 @@ opt = {
    lr = 0.0002,            -- initial learning rate for adam
    beta1 = 0.5,            -- momentum term of adam
    ntrain = math.huge,     -- #  of examples per epoch. math.huge for full dataset
-   display = 1,            -- display samples while training. 0 = false
+   display = 0,            -- display samples while training. 0 = false
    display_id = 10,        -- display window id.
    display_iter = 50,      -- # number of iterations after which display is updated
    gpu = 1,                -- gpu = 0 is CPU mode. gpu=X is GPU mode on GPU X
